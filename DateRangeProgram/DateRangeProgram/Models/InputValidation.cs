@@ -1,8 +1,9 @@
-﻿using System;
+﻿using DateRangeProgram.Models;
+using System;
 
 namespace DateRangeProgram
 {
-    public class InputValidation
+    public class InputValidation : IInputValidation
     {
         private string[] _args;
 
@@ -11,5 +12,13 @@ namespace DateRangeProgram
             _args = args;
         }
 
+        public bool ValidateInputLength()
+        {
+            if (_args.Length == 2 || _args.Length == 3)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
