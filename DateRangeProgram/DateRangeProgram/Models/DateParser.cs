@@ -1,6 +1,4 @@
-﻿
-
-namespace DateRangeProgram.Models
+﻿namespace DateRangeProgram.Models
 {
     public class DateParser : IDateParser
     {
