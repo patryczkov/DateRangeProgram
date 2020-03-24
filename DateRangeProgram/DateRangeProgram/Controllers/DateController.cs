@@ -28,32 +28,39 @@ namespace DateRangeProgram
         
         public void GetDatesRange(string firstDateString, string secondDateString)
         {
+            //stage 1st
             var checkStatus = CheckIfDatesAreProper(firstDateString, secondDateString);
             if (checkStatus != PROPER_DATES_NUMERIC_REPRESENTATION)
             {
                 _view.WrongDateFormatError(checkStatus);
                 return;
             }
-
+            //stage 2nd
             var firstDate = _dateParser.ParseStringIntoDate(firstDateString);
             var secondDate = _dateParser.ParseStringIntoDate(secondDateString);
 
-            if(_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
+            if (_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
             {
                 _view.FirstDateIsBiggerError();
                 return;
             }
+            //stage 3rd
+            PrepareResults(firstDateString, secondDateString, firstDate, secondDate);
 
+        }
+        //TODO check if return are nesessery to valid running of program
+        private void PrepareResults(string firstDateString, string secondDateString, Date firstDate, Date secondDate)
+        {
             var datesDiffrenceArray = _calculateDateRange.CalulateDiffrenceBetweenDates(firstDate, secondDate);
 
-            if(datesDiffrenceArray[YEAR_INDEX] != 0)
+            if (datesDiffrenceArray[YEAR_INDEX] != 0)
             {
                 _view.PrintResultWithBothYear(firstDateString, secondDateString);
                 return;
             }
             else
             {
-                if(datesDiffrenceArray[MONTH_INDEX] != 0)
+                if (datesDiffrenceArray[MONTH_INDEX] != 0)
                 {
                     _view.PrintResultWithBothMonth(firstDate, secondDateString);
                     return;
@@ -64,9 +71,8 @@ namespace DateRangeProgram
                     return;
                 }
             }
-
         }
-          
+
         //it points which date is incorrect so it can send proper message to user
         private int CheckIfDatesAreProper(string firstDateString, string secondDateString)
         {
