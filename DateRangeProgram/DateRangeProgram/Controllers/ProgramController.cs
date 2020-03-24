@@ -5,10 +5,12 @@ namespace DateRangeProgram
 
     public class ProgramController
     {
-        private const int FIRST_DATE_INDEX = 0;
-        private const int SECOND_DATE_INDEX = 1;
-        private const int CULTURE_INDEX = 2;
-
+        private enum Index
+        {
+            firstDate = 0,
+            secondDate= 1,
+            culture = 2
+        }
         private readonly string _firstDateString;
         private readonly string _secondDateString;
         private readonly string _culture;
@@ -21,12 +23,14 @@ namespace DateRangeProgram
 
         public ProgramController(InputValidation inputValidation, ProgramView view, DateController dateController, string[] args)
         {
+            var lenghtOfArgsWithCulture = 3;
+            
             _inputValidation = inputValidation;
             _view = view;
             _dateController = dateController;
-            _firstDateString = args[FIRST_DATE_INDEX];
-            _secondDateString = args[SECOND_DATE_INDEX];
-            if (args.Length == 3) _culture = args[CULTURE_INDEX];
+            _firstDateString = args[(int)Index.firstDate];
+            _secondDateString = args[(int)Index.secondDate];
+            if (args.Length == lenghtOfArgsWithCulture) _culture = args[(int)Index.culture];
         }
 
         public void RunProgram()
@@ -34,7 +38,6 @@ namespace DateRangeProgram
             if (!_inputValidation.ValidateInputLength())
             {
                 _view.InputLegthError();
-                return;
             }
             
             if (_culture != null) 
@@ -45,8 +48,6 @@ namespace DateRangeProgram
             {
                 _dateController.GetDatesRange(_firstDateString, _secondDateString);
             }
-
-
 
         }
 
