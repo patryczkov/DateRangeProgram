@@ -5,13 +5,18 @@ namespace DateRangeProgram
 {
     public class DateController
     {
-        private const int FIRST_DATE_NUMERIC_REPRESENTATION = 1;
-        private const int SECOND_DATE_NUMERIC_REPRESENTATION = 2;
-        private const int PROPER_DATES_NUMERIC_REPRESENTATION = 0;
-
-        private const int DAY_INDEX = 0;
-        private const int MONTH_INDEX = 1;
-        private const int YEAR_INDEX = 2;
+        private enum NumericRepresentation
+        {
+            firstDate = 1,
+            secondDate = 2,
+            properDate = 0
+        }
+        private enum Index 
+        {
+            day = 0,
+            month = 1,
+            year = 2
+        }
 
         private readonly IDateValidation _dateValidation;
         private readonly IDateParser _dateParser;
@@ -30,7 +35,7 @@ namespace DateRangeProgram
         {
             //stage 1st - Check if dateFormats are proper
             var checkStatus = CheckIfDatesAreProper(firstDateString, secondDateString);
-            if (checkStatus != PROPER_DATES_NUMERIC_REPRESENTATION)
+            if (checkStatus != (int)NumericRepresentation.properDate)
             {
                 _view.WrongDateFormatError(checkStatus);
                 return;
@@ -48,37 +53,32 @@ namespace DateRangeProgram
             PrepareResults(firstDateString, secondDateString, firstDate, secondDate);
 
         }
-        //TODO check if return are nesessery to valid running of program
         private void PrepareResults(string firstDateString, string secondDateString, Date firstDate, Date secondDate)
         {
             var datesDiffrenceArray = _calculateDateRange.CalulateDiffrenceBetweenDates(firstDate, secondDate);
 
-            if (datesDiffrenceArray[YEAR_INDEX] != 0)
+            if (datesDiffrenceArray[(int)Index.year] != 0)
             {
                 _view.PrintResultWithBothYear(firstDateString, secondDateString);
-                return;
             }
             else
             {
-                if (datesDiffrenceArray[MONTH_INDEX] != 0)
+                if (datesDiffrenceArray[(int)Index.month] != 0)
                 {
                     _view.PrintResultWithBothMonth(firstDate, secondDateString);
-                    return;
                 }
                 else
                 {
                     _view.PrintResultWithBothDay(firstDate, secondDateString);
-                    return;
                 }
             }
         }
-
         //it points which date is incorrect so it can send proper message to user
         private int CheckIfDatesAreProper(string firstDateString, string secondDateString)
         {
-            if (!_dateValidation.ValidateDate(firstDateString)) return FIRST_DATE_NUMERIC_REPRESENTATION;
-            if (!_dateValidation.ValidateDate(secondDateString)) return SECOND_DATE_NUMERIC_REPRESENTATION;
-            return PROPER_DATES_NUMERIC_REPRESENTATION;
+            if (!_dateValidation.ValidateDate(firstDateString)) return  (int)NumericRepresentation.firstDate;
+            if (!_dateValidation.ValidateDate(secondDateString)) return (int)NumericRepresentation.secondDate;
+            return (int)NumericRepresentation.properDate;
         }
 
     }
