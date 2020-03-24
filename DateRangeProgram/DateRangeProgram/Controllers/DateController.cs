@@ -53,7 +53,6 @@ namespace DateRangeProgram
             PrepareResults(firstDateString, secondDateString, firstDate, secondDate);
 
         }
-        //TODO check if return are nesessery to valid running of program
         private void PrepareResults(string firstDateString, string secondDateString, Date firstDate, Date secondDate)
         {
             var datesDiffrenceArray = _calculateDateRange.CalulateDiffrenceBetweenDates(firstDate, secondDate);
