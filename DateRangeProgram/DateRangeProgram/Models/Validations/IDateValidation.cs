@@ -6,6 +6,6 @@ namespace DateRangeProgram.Models
 {
     public interface IDateValidation
     { 
-        bool ValidateDate(string culture);
+        bool ValidateDate(string dateString);
     }
 }

@@ -18,15 +18,15 @@ namespace DateRangeProgram.Models
             var splittedDate = dateString.Split(".");
             if (culture == "eu")
             {
-                return new Date(splittedDate[_DAY_INDEX_EU],
-                splittedDate[_MONTH_INDEX_EU],
-                splittedDate[_YEAR_INDEX]);
+                return new Date(int.Parse(splittedDate[_DAY_INDEX_EU]),
+                int.Parse(splittedDate[_MONTH_INDEX_EU]),
+                int.Parse(splittedDate[_YEAR_INDEX]));
             }
             else
             {
-                return new Date(splittedDate[_DAY_INDEX_US],
-                splittedDate[_MONTH_INDEX_US],
-                splittedDate[_YEAR_INDEX]);
+                return new Date(int.Parse(splittedDate[_DAY_INDEX_US]),
+                int.Parse(splittedDate[_MONTH_INDEX_US]),
+                int.Parse(splittedDate[_YEAR_INDEX]));
             }
         }
     }
