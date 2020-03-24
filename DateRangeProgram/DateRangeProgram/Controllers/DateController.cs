@@ -26,25 +26,25 @@ namespace DateRangeProgram
             _view = view;
         }
         
-        public void GetDatesRange(string firstDateString, string secondDateString)
+        public void GetDatesRange(string firstDateString, string secondDateString, string culture = "eu")
         {
-            //stage 1st
+            //stage 1st - Check if dateFormats are proper
             var checkStatus = CheckIfDatesAreProper(firstDateString, secondDateString);
             if (checkStatus != PROPER_DATES_NUMERIC_REPRESENTATION)
             {
                 _view.WrongDateFormatError(checkStatus);
                 return;
             }
-            //stage 2nd
-            var firstDate = _dateParser.ParseStringIntoDate(firstDateString);
-            var secondDate = _dateParser.ParseStringIntoDate(secondDateString);
+            //stage 2nd - check if first date is smaller than second one
+            var firstDate = _dateParser.ParseStringIntoDate(firstDateString, culture);
+            var secondDate = _dateParser.ParseStringIntoDate(secondDateString, culture);
 
             if (_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
             {
                 _view.FirstDateIsBiggerError();
                 return;
             }
-            //stage 3rd
+            //stage 3rd - prepare result by printing it
             PrepareResults(firstDateString, secondDateString, firstDate, secondDate);
 
         }
