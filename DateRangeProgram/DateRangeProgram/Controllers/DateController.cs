@@ -48,7 +48,21 @@ namespace DateRangeProgram
 
             if(datesDiffrenceArray[YEAR_INDEX] != 0)
             {
-                _view.PrintResultWithBothYear(firstDateString, secondDateString)
+                _view.PrintResultWithBothYear(firstDateString, secondDateString);
+                return;
+            }
+            else
+            {
+                if(datesDiffrenceArray[MONTH_INDEX] != 0)
+                {
+                    _view.PrintResultWithBothMonth(firstDate, secondDateString);
+                    return;
+                }
+                else
+                {
+                    _view.PrintResultWithBothDay(firstDate, secondDateString);
+                    return;
+                }
             }
 
         }
