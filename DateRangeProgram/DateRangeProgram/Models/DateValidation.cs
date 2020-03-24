@@ -26,12 +26,7 @@ namespace DateRangeProgram.Models
             }
             else _format = DEFAULT_CULTURE;
         }
-        //TODO make detection of culture
-        public string DetectCulture()
-        {
-            throw new NotImplementedException();
-        }
-
+ 
         public bool ValidateDate(string dateString)
         {
             if (_format == "eu")
