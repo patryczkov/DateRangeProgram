@@ -17,7 +17,11 @@ namespace DateRangeProgram.Models
             _format = DEFAULT_CULTURE;
         }
 
-
+        /*Culture must be provided in argument line, 
+         * because it's not possible to find diffrence for dates like 01.02.2000 - 
+         * in EU system it will be 1st of febuary, 
+         * in US 2nd of january
+         */
         public DateValidation(string culture)
         {
             if (culture != null)
