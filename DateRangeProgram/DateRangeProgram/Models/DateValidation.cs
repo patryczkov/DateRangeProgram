@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DateRangeProgram.Models
 {
-    public class DateValidation
+    public class DateValidation :IDateValidation
     {
         private const string DEFAULT_CULTURE = "eu";
         private const string EU_CULTURE = "dd'.'MM'.'yyyy";
@@ -26,6 +26,12 @@ namespace DateRangeProgram.Models
             }
             else _format = DEFAULT_CULTURE;
         }
+        //TODO make detection of culture
+        public string DetectCulture()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateDate(string dateString)
         {
             if (_format == "eu")

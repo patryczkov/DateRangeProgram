@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DateRangeProgram.Models
 {
-    interface IDateValidation
+    public interface IDateValidation
     {
         string DetectCulture();
         bool ValidateDate(string culture);
