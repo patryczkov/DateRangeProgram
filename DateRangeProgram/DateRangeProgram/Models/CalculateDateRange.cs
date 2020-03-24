@@ -6,9 +6,13 @@ namespace DateRangeProgram.Models
 {
     public class CalculateDateRange : ICalculateDateRange
     {
-        public string[] CalulateDiffrenceBetweenDates(Date firstDate, Date secondDate)
+        public int[] CalulateDiffrenceBetweenDates(Date firstDate, Date secondDate)
         {
-            throw new NotImplementedException();
+            var yearDiffrence = firstDate.Year - secondDate.Year;
+            var monthDiffrence = firstDate.Month - secondDate.Month;
+            var dayDiffrence = firstDate.Day - secondDate.Day;
+
+            return new int[] { dayDiffrence, monthDiffrence, yearDiffrence};
         }
 
         public bool CheckIfFirstDateIsSmallerThansSecondOne(Date firstDate, Date secondDate)
