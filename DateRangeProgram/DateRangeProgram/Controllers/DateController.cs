@@ -39,7 +39,7 @@ namespace DateRangeProgram
             var firstDate = _dateParser.ParseStringIntoDate(firstDateString, culture);
             var secondDate = _dateParser.ParseStringIntoDate(secondDateString, culture);
 
-            if (_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
+            if (!_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
             {
                 _view.FirstDateIsBiggerError();
                 return;
