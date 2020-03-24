@@ -12,7 +12,7 @@ namespace DateRangeProgram.Models
             var monthDiffrence = firstDate.Month - secondDate.Month;
             var dayDiffrence = firstDate.Day - secondDate.Day;
 
-            return new int[] { dayDiffrence, monthDiffrence, yearDiffrence};
+            return new int[] { dayDiffrence, monthDiffrence, yearDiffrence };
         }
 
         public bool CheckIfFirstDateIsSmallerThansSecondOne(Date firstDate, Date secondDate)
