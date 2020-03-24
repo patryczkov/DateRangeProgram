@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DateRangeProgram.Models;
+using DateRangeProgram.Views;
+using System;
 
 namespace DateRangeProgram
 {
