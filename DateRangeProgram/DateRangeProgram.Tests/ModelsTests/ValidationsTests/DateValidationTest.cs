@@ -35,8 +35,34 @@ namespace DateRangeProgram.Tests.ModelsTests.ValidationsTests
             //assert
             Assert.IsTrue(result);
         }
+        [Test]
+        public void CheckIfDateIsInvalidFor_USCulture()
+        {
+            //arrange
+            var testDateUS = "20.02.2010";
+            var culture = "us";
+            var dateValidation = new DateValidation(culture);
 
+            //act
+            var result = dateValidation.ValidateDate(testDateUS);
 
+            //assert
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void CheckIfDateIsInvalidFor_EUCulture()
+        {
+            //arrange
+            var testDateUS = "12.20.2010";
+            var culture = "eu";
+            var dateValidation = new DateValidation(culture);
+
+            //act
+            var result = dateValidation.ValidateDate(testDateUS);
+
+            //assert
+            Assert.IsFalse(result);
+        }
 
     }
 }
