@@ -98,8 +98,7 @@ namespace DateRangeProgram.Tests.ModelsTests.ValidationsTests
             //act
             var result = dateValidation.ValidateDate(testDate);
             //assert
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
-
     }
 }

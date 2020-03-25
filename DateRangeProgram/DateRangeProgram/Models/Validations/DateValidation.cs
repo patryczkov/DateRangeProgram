@@ -28,7 +28,7 @@ namespace DateRangeProgram.Models
             }
             else _format = DEFAULT_CULTURE;
         }
- 
+        //TODO detect 1,2,3 digits year, for it working for 0001 year ect
         public bool ValidateDate(string dateString)
         {
             if (_format == "eu")
@@ -39,9 +39,9 @@ namespace DateRangeProgram.Models
             {
                 return ValidateDateForCertainFormat(dateString, US_CULTURE);
             }
-            Console.WriteLine("Unrecognised culture");
             return false;
         }
+
         private bool ValidateDateForCertainFormat(string dateString, string cultureType)
         {
             DateTime dateTime;
