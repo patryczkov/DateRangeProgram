@@ -38,10 +38,6 @@ namespace DateRangeProgram
 
             //Program turn on
             programController.RunProgram();
-
-
-
-         
   
         }
     }
