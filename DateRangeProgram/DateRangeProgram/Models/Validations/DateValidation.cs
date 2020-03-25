@@ -24,7 +24,7 @@ namespace DateRangeProgram.Models
         {
             if (culture != null)
             {
-                _format = culture;
+                _format = culture.ToLower();
             }
             else _format = DEFAULT_CULTURE;
         }
@@ -39,7 +39,7 @@ namespace DateRangeProgram.Models
             {
                 return ValidateDateForCertainFormat(dateString, US_CULTURE);
             }
-            Console.WriteLine("Unrecognised format");
+            Console.WriteLine("Unrecognised culture");
             return false;
         }
         private bool ValidateDateForCertainFormat(string dateString, string cultureType)
