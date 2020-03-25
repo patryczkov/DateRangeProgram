@@ -63,6 +63,43 @@ namespace DateRangeProgram.Tests.ModelsTests.ValidationsTests
             //assert
             Assert.IsFalse(result);
         }
+        [Test]
+        public void CheckIfNotRecognizedCultureWillBeDetected()
+        {
+            //arrange
+            var testDateUS = "12.20.2010";
+            var culture = "test";
+            var dateValidation = new DateValidation(culture);
+
+            //act
+            var result = dateValidation.ValidateDate(testDateUS);
+
+            //assert
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void CheckIfLeapYearWillBeDetected()
+        {
+            //arrange
+            var testDate = "29.02.2020";
+            var dateValidation = new DateValidation();
+            //act
+            var result = dateValidation.ValidateDate(testDate);
+            //assert
+            Assert.IsTrue(result);
+        }
+
+        [Test]
+        public void CheckIfTwoDigitYearWillBeCorrectlyDetected()
+        {
+            var testDate = "29.02.20";
+            var dateValidation = new DateValidation();
+            //act
+            var result = dateValidation.ValidateDate(testDate);
+            //assert
+            Assert.IsTrue(result);
+        }
 
     }
 }
