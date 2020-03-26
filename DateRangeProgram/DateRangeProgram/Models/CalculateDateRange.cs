@@ -5,9 +5,9 @@ namespace DateRangeProgram.Models
     {
         public int[] CalulateDiffrenceBetweenDates(Date firstDate, Date secondDate)
         {
-            var yearDiffrence = firstDate.Year - secondDate.Year;
-            var monthDiffrence = firstDate.Month - secondDate.Month;
-            var dayDiffrence = firstDate.Day - secondDate.Day;
+            var yearDiffrence = secondDate.Year - firstDate.Year;
+            var monthDiffrence = secondDate.Month- firstDate.Month;
+            var dayDiffrence = secondDate.Day- firstDate.Day;
 
             return new int[] { dayDiffrence, monthDiffrence, yearDiffrence };
         }

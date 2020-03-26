@@ -8,8 +8,11 @@ namespace DateRangeProgram
     {
         static void Main(string[] args)
         {
-            //TODO after unit testing remove it
-            //var testArgs = new string[] { "01.01.2000", "01.02.2000"};
+            //Debug args parameters
+            if (args == null || args[0] == "debug") 
+            { 
+                args = new string[] { "01.01.2000", "01.02.2000" };
+            }
 
             //views initialization
             var dateView = new DateView();
@@ -38,7 +41,6 @@ namespace DateRangeProgram
 
             //Program turn on
             programController.RunProgram();
-
         }
     }
 }
