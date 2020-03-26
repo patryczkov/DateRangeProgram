@@ -10,3 +10,4 @@ The program has unit tests written.
 TODO
 -to make the years read independently of the number of digits (now it works on 0001 A.D.)
 -to decide if integration tests make sense
+-more culture formats to add
