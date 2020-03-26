@@ -1,13 +1,12 @@
 # DateRangeProgram
-This is a short program thats takes date arguments on turn on from terminal
-and return the range depend on diffrences between dates.
+It is a small program which, when starting from a terminal, when giving arguments, gives the time interval between dates.
 
-To run program just write dates program.exe dd.mm.yyyy dd.mm.yyyy for EU format,
-for US format type program.exe mm.dd.yyyy mm.dd.yyy us.
+To start the program, type >\program.exe dd.mm.yyyy dd.mm.yyyy, for the EU(default) format,
+or >\program.exe mm.dd.yyyyy mm.dd.yyyyy us, for US format
 
-Program has tests for logic of application.
+If you run the program with the debug parameter, a comparison of saved dates for the EU format will start.
+The program has unit tests written.
 
-TODO:
--make year of diffrent digits readable (right now it's taking input for 1 A.D. as 0001 year)
-
-If you wish to go with debug mode just type program.exe debug to run custom date in EU format.
+TODO
+-to make the years read independently of the number of digits (now it works on 0001 A.D.)
+-to decide if integration tests make sense
