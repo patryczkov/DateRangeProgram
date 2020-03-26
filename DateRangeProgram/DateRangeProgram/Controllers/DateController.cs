@@ -38,7 +38,6 @@ namespace DateRangeProgram
             if (checkStatus != (int)NumericRepresentation.properDate)
             {
                 _view.WrongDateFormatError(checkStatus);
-                return;
             }
             //stage 2nd - check if first date is smaller than second one
             var firstDate = _dateParser.ParseStringIntoDate(firstDateString, culture);
@@ -47,29 +46,28 @@ namespace DateRangeProgram
             if (!_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
             {
                 _view.FirstDateIsBiggerError();
-                return;
             }
             //stage 3rd - prepare result by printing it
-            PrepareResults(firstDateString, secondDateString, firstDate, secondDate);
+            PrepareResults(firstDate, secondDate);
 
         }
-        private void PrepareResults(string firstDateString, string secondDateString, Date firstDate, Date secondDate)
+        private void PrepareResults(Date firstDate, Date secondDate)
         {
             var datesDiffrenceArray = _calculateDateRange.CalulateDiffrenceBetweenDates(firstDate, secondDate);
 
             if (datesDiffrenceArray[(int)Index.year] != 0)
             {
-                _view.PrintResultWithBothYear(firstDateString, secondDateString);
+                _view.PrintResultWithBothYear(firstDate, secondDate);
             }
             else
             {
                 if (datesDiffrenceArray[(int)Index.month] != 0)
                 {
-                    _view.PrintResultWithBothMonth(firstDate, secondDateString);
+                    _view.PrintResultWithBothMonth(firstDate, secondDate);
                 }
                 else
                 {
-                    _view.PrintResultWithBothDay(firstDate, secondDateString);
+                    _view.PrintResultWithBothDay(firstDate, secondDate);
                 }
             }
         }

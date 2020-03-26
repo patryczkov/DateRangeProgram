@@ -14,19 +14,22 @@ namespace DateRangeProgram.Views
             Console.WriteLine("First date is bigger then second one");
         }
 
-        public void PrintResultWithBothYear(string firstDateString, string secondDateString)
+        public void PrintResultWithBothYear(Date firstDate, Date secondDate)
         {
-            Console.WriteLine($"{firstDateString} - {secondDateString}");
-        }
-        //TODO change formating of 01, 03 ect. intigers
-        public void PrintResultWithBothMonth(Date firstDate, string secondDateString)
-        {
-            Console.WriteLine($"{firstDate.Day}.{firstDate.Month} - {secondDateString}");
+            Console.WriteLine($"{firstDate.Day:D2}.{firstDate.Month:D2}.{firstDate.Year:D4} " +
+                $"- {secondDate.Day:D2}.{secondDate.Month:D2}.{secondDate.Year:D4}");
         }
 
-        public void PrintResultWithBothDay(Date firstDate, string secondDateString)
+        public void PrintResultWithBothMonth(Date firstDate, Date secondDate)
         {
-            Console.WriteLine($"{firstDate.Day} - {secondDateString}");
+            Console.WriteLine($"{firstDate.Day:D2}.{firstDate.Month:D2}" +
+                $" - {secondDate.Day:D2}.{secondDate.Month:D2}.{secondDate.Year:D4}");
+        }
+
+        public void PrintResultWithBothDay(Date firstDate, Date secondDate)
+        {
+            Console.WriteLine($"{firstDate.Day:D2} " +
+                $" - {secondDate.Day:D2}.{secondDate.Month:D2}.{secondDate.Year:D4}");
         }
     }
 }
