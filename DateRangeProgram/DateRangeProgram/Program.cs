@@ -9,7 +9,7 @@ namespace DateRangeProgram
         static void Main(string[] args)
         {
             //Debug args parameters
-            if (args == null || args[0] == "debug") 
+            if (args[0] == "debug") 
             { 
                 args = new string[] { "01.01.2000", "01.02.2000" };
             }

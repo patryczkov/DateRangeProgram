@@ -8,9 +8,16 @@ namespace DateRangeProgram
         private enum Index
         {
             firstDate = 0,
-            secondDate= 1,
+            secondDate = 1,
             culture = 2
         }
+        private enum ArgsLegth
+        {
+            lenghtOfArgsWithOutCulture = 2,
+            lenghtOfArgsWithCulture = 3
+        }
+
+
         private readonly string _firstDateString;
         private readonly string _secondDateString;
         private readonly string _culture;
@@ -23,26 +30,30 @@ namespace DateRangeProgram
 
         public ProgramController(InputValidation inputValidation, ProgramView view, DateController dateController, string[] args)
         {
-            var lenghtOfArgsWithCulture = 3;
-            
             _inputValidation = inputValidation;
             _view = view;
             _dateController = dateController;
-            _firstDateString = args[(int)Index.firstDate];
-            _secondDateString = args[(int)Index.secondDate];
-            if (args.Length == lenghtOfArgsWithCulture) _culture = args[(int)Index.culture];
+            if (args.Length >= (int)ArgsLegth.lenghtOfArgsWithOutCulture)
+            {
+                _firstDateString = args[(int)Index.firstDate];
+                _secondDateString = args[(int)Index.secondDate];
+            }
+            if (args.Length == (int)ArgsLegth.lenghtOfArgsWithCulture)
+            {
+                _culture = args[(int)Index.culture];
+            }
         }
-
         public void RunProgram()
         {
             if (!_inputValidation.ValidateInputLength())
             {
                 _view.InputLegthError();
+                return;
             }
-            
-            if (_culture != null) 
+
+            if (_culture != null)
             {
-                _dateController.GetDatesRange(_firstDateString, _secondDateString, _culture); 
+                _dateController.GetDatesRange(_firstDateString, _secondDateString, _culture);
             }
             else
             {

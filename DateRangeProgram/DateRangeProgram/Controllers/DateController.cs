@@ -38,6 +38,7 @@ namespace DateRangeProgram
             if (checkStatus != (int)NumericRepresentation.properDate)
             {
                 _view.WrongDateFormatError(checkStatus);
+                return;
             }
             //stage 2nd - check if first date is smaller than second one
             var firstDate = _dateParser.ParseStringIntoDate(firstDateString, culture);
@@ -46,6 +47,7 @@ namespace DateRangeProgram
             if (!_calculateDateRange.CheckIfFirstDateIsSmallerThansSecondOne(firstDate, secondDate))
             {
                 _view.FirstDateIsBiggerError();
+                return;
             }
             //stage 3rd - prepare result by printing it
             PrepareResults(firstDate, secondDate);
